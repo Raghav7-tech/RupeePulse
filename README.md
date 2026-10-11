@@ -28,8 +28,8 @@ npm run check
 
 - React + TypeScript + Vite
 - Zustand with `localStorage` persistence
-- Recharts for forecast bands
-- Framer Motion for meaningful state transitions
+- Dependency-free SVG forecast visualisation
+- CSS-only, reduced-motion-aware state transitions
 - Lucide React icons
 - Tailwind build pipeline plus an original responsive design system
 
@@ -48,7 +48,9 @@ npm run check
 
 - `src/engine/` contains the pure financial model, deterministic seed data, and unit tests.
 - `src/store/` is the single state boundary. All confirmed decisions, day advancement, reset, and undo flow through it.
-- `src/App.tsx` contains the four user-facing workspaces: Today, Decision Lab, Forecast, and Plans & Goals.
+- `src/features/` contains independently loaded Today, Decision Lab, Forecast, and Plans & Goals modules.
+- `src/components/` contains reusable layout, feedback, financial visual, and chart primitives.
+- `src/App.tsx` is a small application shell responsible only for navigation and page loading.
 - `src/styles.css` contains the Obsidian Kinetic visual system and responsive rules for desktop, tablet, and mobile.
 
 ## Core formulas
@@ -63,11 +65,11 @@ npm run check
 ## Quality, security, and accessibility
 
 - TypeScript strict mode and a zero-warning ESLint gate.
-- Four deterministic engine tests, including the required ₹500 interconnection test.
+- Eleven deterministic engine tests cover forecasting, state isolation, scheduled cashflow, sanitisation, shocks, goals, and boundary conditions.
 - Zero known npm vulnerabilities at release (`npm audit`).
 - User-entered amounts are finite, positive, capped, and normalised; text is trimmed, bounded, and stripped of markup delimiters. React renders all content as escaped text.
 - A restrictive Content Security Policy blocks third-party scripts, objects, framing bases, and form exfiltration.
-- The forecast chart is lazy-loaded into its own chunk; there are no remote API or web-font requests on first paint.
+- Secondary pages are route-level code split, the chart is native SVG, and there are no remote API, image, or web-font requests on first paint.
 - Semantic landmarks, visible focus, skip navigation, labelled fields, `aria-current`, live result announcements, keyboard operation, and reduced-motion support.
 - Responsive QA targets: 360px, 768px, 1280px, and 1920px.
 
@@ -85,3 +87,9 @@ Every push to `main` runs lint, tests, and a GitHub-Pages-mode production build 
 6. Audit subscriptions under **Plans & Goals** and inspect forecast uncertainty under **Forecast**.
 
 All data stays in the browser. Use Reset in the header menu to restore the seeded scenario.
+
+## Engineering evidence
+
+- [Architecture and data flow](./docs/ARCHITECTURE.md)
+- [Quality, security, performance, and accessibility](./docs/QUALITY.md)
+- [Testing and responsive matrix](./docs/TESTING.md)
