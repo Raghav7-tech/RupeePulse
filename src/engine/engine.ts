@@ -2,6 +2,8 @@ import type { Decision, FinanceState, ForecastPoint, Metrics, SimulationResult, 
 
 const clamp = (n: number, min = 0, max = 100) => Math.min(max, Math.max(min, n))
 const round = (n: number) => Math.round(n)
+const safeAmount = (n: number) => Number.isFinite(n) ? clamp(Math.abs(n), 0, 10_000_000) : 0
+const safeText = (value: string) => value.trim().replace(/[<>]/g, '').slice(0, 80) || 'Untitled decision'
 
 export const getBalance = (state: FinanceState) => {
   const net = state.transactions.reduce((sum, t) => sum + (t.kind === 'income' ? t.amount : -t.amount), 0)
@@ -104,14 +106,14 @@ export const calculateMetrics = (state: FinanceState): Metrics => {
 
 export const applyDecision = (source: FinanceState, decision: Decision): FinanceState => {
   const state = structuredClone(source)
-  const tx = (kind: 'expense' | 'income', title: string, amount: number, category: Transaction['category']): Transaction => ({ id: crypto.randomUUID(), day: state.day, title, amount, kind, category })
+  const tx = (kind: 'expense' | 'income', title: string, amount: number, category: Transaction['category']): Transaction => ({ id: crypto.randomUUID(), day: state.day, title: safeText(title), amount: safeAmount(amount), kind, category })
   if (decision.type === 'expense') state.transactions.unshift(tx('expense', decision.title, decision.amount, decision.category))
   if (decision.type === 'income') state.transactions.unshift(tx('income', decision.title, decision.amount, 'Income'))
   if (decision.type === 'cancel-subscription') {
     const item = state.subscriptions.find(s => s.id === decision.subscriptionId)
     if (item) item.active = false
   }
-  if (decision.type === 'add-subscription') state.subscriptions.push({ id: crypto.randomUUID(), title: decision.title, amount: decision.amount, day: Math.min(30, state.day + 5), active: true, paid: false, worthIt: 3 })
+  if (decision.type === 'add-subscription') state.subscriptions.push({ id: crypto.randomUUID(), title: safeText(decision.title), amount: safeAmount(decision.amount), day: Math.min(30, state.day + 5), active: true, paid: false, worthIt: 3 })
   if (decision.type === 'goal-contribution') {
     const goal = state.goals.find(g => g.id === decision.goalId)
     if (goal) goal.saved = Math.min(goal.target, goal.saved + decision.amount)

@@ -1,21 +1,20 @@
-import { useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   Activity, AlertTriangle, ArrowDownRight, ArrowRight, ArrowUpRight, BadgeIndianRupee,
-  BarChart3, BellRing, CalendarDays, Check, ChevronRight, CircleDollarSign, Cloud,
+  BarChart3, BellRing, CalendarDays, Check, ChevronRight, Cloud,
   Coffee, CreditCard, Dumbbell, FastForward, Gauge, HeartPulse, Home, Lightbulb,
-  Menu, Moon, Music2, Plane, Play, Plus, RefreshCcw, RotateCcw, ShieldCheck,
-  Sparkles, Target, TrendingDown, TrendingUp, Tv, WalletCards, X, Zap,
+  Menu, Music2, Plane, Play, Plus, RefreshCcw, RotateCcw, ShieldCheck,
+  Sparkles, Target, TrendingUp, Tv, WalletCards, X, Zap,
 } from 'lucide-react'
-import {
-  Area, AreaChart, CartesianGrid, Line, ResponsiveContainer, Tooltip, XAxis, YAxis,
-} from 'recharts'
 import { calculateMetrics, simulate } from './engine/engine'
 import type { Category, Decision, FinanceState, Metrics, SimulationResult, Subscription } from './engine/types'
 import { inr, pct } from './lib/format'
 import { useFinanceStore } from './store/useFinanceStore'
 
 type Page = 'today' | 'simulator' | 'forecast' | 'plans'
+
+const ForecastChart = lazy(() => import('./components/ForecastChart'))
 
 const navItems: { id: Page; label: string; short: string; icon: typeof Home }[] = [
   { id: 'today', label: 'Today', short: 'Today', icon: Home },
@@ -49,7 +48,7 @@ function Header({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
   const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
-    if (!playing || finance.day >= 30) { if (finance.day >= 30) setPlaying(false); return }
+    if (!playing || finance.day >= 30) return
     const timer = window.setTimeout(nextDay, 440)
     return () => window.clearTimeout(timer)
   }, [playing, finance.day, nextDay])
@@ -62,12 +61,12 @@ function Header({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
           <span><b>Rupee<span>Pulse</span></b><small>₹10K • 30 days</small></span>
         </button>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navItems.map(item => <button key={item.id} className={page === item.id ? 'active' : ''} onClick={() => setPage(item.id)}>{item.label}</button>)}
+          {navItems.map(item => <button key={item.id} aria-current={page === item.id ? 'page' : undefined} className={page === item.id ? 'active' : ''} onClick={() => setPage(item.id)}>{item.label}</button>)}
         </nav>
         <div className="nav-actions">
           <div className="day-pill"><span className="pulse" /> Day {finance.day}<span>/30</span></div>
           <button className="icon-label next" onClick={nextDay} disabled={finance.day >= 30} data-testid="next-day-button"><FastForward size={15} /><span>Next day</span></button>
-          <button className={`icon-label autoplay ${playing ? 'on' : ''}`} onClick={() => setPlaying(!playing)}><Play size={14} fill="currentColor" /><span>{playing ? 'Pause' : 'Auto'}</span></button>
+          <button className={`icon-label autoplay ${playing && finance.day < 30 ? 'on' : ''}`} aria-label={playing && finance.day < 30 ? 'Pause automatic day advance' : 'Automatically advance through the month'} onClick={() => setPlaying(!playing)}><Play size={14} fill="currentColor" /><span>{playing && finance.day < 30 ? 'Pause' : 'Auto'}</span></button>
           <div className="balance-mini"><span>Balance</span><b>{inr(metrics.balance)}</b></div>
           <button className="icon-button desktop-only" aria-label="Reset scenario" onClick={reset} data-testid="reset-button"><RotateCcw size={17} /></button>
           <button className="icon-button menu-button" aria-label="Open menu" onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button>
@@ -75,7 +74,7 @@ function Header({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
       </div>
     </header>
     <AnimatePresence>{menu && <motion.div className="mobile-menu" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-      {navItems.map(item => <button key={item.id} className={page === item.id ? 'active' : ''} onClick={() => { setPage(item.id); setMenu(false) }}><item.icon size={18} />{item.label}</button>)}
+      {navItems.map(item => <button key={item.id} aria-current={page === item.id ? 'page' : undefined} className={page === item.id ? 'active' : ''} onClick={() => { setPage(item.id); setMenu(false) }}><item.icon size={18} aria-hidden="true"/>{item.label}</button>)}
       <div className="mobile-menu-actions"><button onClick={reset}><RotateCcw size={16} /> Reset</button><label>Jump to day <input type="number" min="8" max="30" value={finance.day} onChange={e => jumpToDay(Number(e.target.value))} /></label></div>
     </motion.div>}</AnimatePresence>
   </>
@@ -133,15 +132,7 @@ function MiniForecast({ metrics, onOpen }: { metrics: Metrics; onOpen: () => voi
   const sampled = metrics.forecast.filter((_, i) => i % 3 === 0 || i === metrics.forecast.length - 1)
   return <article className="panel forecast-mini">
     <div className="section-title"><div><span className="eyebrow">RUNWAY TRAJECTORY</span><h3>Where your money lands</h3></div><button className="text-button" onClick={onOpen}>Full forecast <ArrowRight /></button></div>
-    <div className="chart-wrap mini-chart">
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={sampled} margin={{ top: 10, right: 3, left: -28, bottom: 0 }}>
-          <defs><linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#00e6a4" stopOpacity={.28}/><stop offset="100%" stopColor="#00e6a4" stopOpacity={0}/></linearGradient></defs>
-          <CartesianGrid strokeDasharray="3 6" stroke="#27313d" vertical={false}/><XAxis dataKey="day" tickFormatter={d => `D${d}`} tick={{ fill: '#738091', fontSize: 11 }} axisLine={false} tickLine={false}/><YAxis tick={{ fill: '#738091', fontSize: 10 }} axisLine={false} tickLine={false}/>
-          <Area type="monotone" dataKey="expected" stroke="#00e6a4" strokeWidth={2.5} fill="url(#mintFill)" />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
+    <div className="chart-wrap mini-chart"><Suspense fallback={<div className="chart-skeleton" aria-label="Loading forecast chart" />}><ForecastChart data={sampled}/></Suspense></div>
     <div className="forecast-caption"><span><i className="legend-dot mint-bg" /> Expected</span><b>{metrics.endBalance >= 0 ? `${inr(metrics.endBalance)} on Day 30` : `${inr(metrics.endBalance)} short`}</b></div>
   </article>
 }
@@ -153,9 +144,10 @@ function QuickAdd() {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState<Category>('Food')
   const add = () => {
-    const parsed = Number(amount)
+    const parsed = Math.min(10_000_000, Number(amount))
     if (!title.trim() || !Number.isFinite(parsed) || parsed <= 0) return
-    const decision: Decision = kind === 'expense' ? { type: 'expense', title, amount: parsed, category } : { type: 'income', title, amount: parsed }
+    const safeTitle = title.trim().replace(/[<>]/g, '').slice(0, 60)
+    const decision: Decision = kind === 'expense' ? { type: 'expense', title: safeTitle, amount: parsed, category } : { type: 'income', title: safeTitle, amount: parsed }
     commit(decision, `${kind === 'expense' ? 'Expense' : 'Income'} added. Your full money picture is updated.`)
     setAmount(''); setTitle('')
   }
@@ -243,9 +235,7 @@ function SimulatorPage({ initial }: { initial?: Decision }) {
   const [title, setTitle] = useState('Impulse Swiggy splurge')
   const [amount, setAmount] = useState(450)
   const [kind, setKind] = useState<'expense' | 'income'>('expense')
-  const [result, setResult] = useState<SimulationResult>(() => simulate(finance, decision))
-
-  useEffect(() => setResult(simulate(finance, decision)), [finance, decision])
+  const result: SimulationResult = useMemo(() => simulate(finance, decision), [finance, decision])
   const recalc = () => setDecision(kind === 'expense' ? { type: 'expense', title, amount, category: 'Food' } : { type: 'income', title, amount })
   const verdict = result.delta.risk > 5
     ? `This choice raises your risk to ${result.after.riskLevel} and removes ${inr(Math.abs(result.delta.allowance))} from each day.`
@@ -298,7 +288,7 @@ function ForecastPage() {
       <article><span>Runway</span><strong>{metrics.runway} days</strong><small>{metrics.daysRemaining} days still to cover</small></article>
     </div>
     <section className="panel full-chart-panel"><div className="section-title"><div><span className="eyebrow">PROBABILISTIC CASHFLOW ENVELOPE</span><h3>₹10,000 month trajectory</h3></div><div className="legend"><span><i className="mint-bg"/>Expected</span><span><i className="purple-bg"/>Best</span><span><i className="coral-bg"/>Worst</span></div></div>
-      <div className="chart-wrap full-chart"><ResponsiveContainer width="100%" height="100%"><AreaChart data={metrics.forecast} margin={{ top: 16, right: 16, left: 2, bottom: 0 }}><defs><linearGradient id="expectedFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#00e6a4" stopOpacity={.24}/><stop offset="100%" stopColor="#00e6a4" stopOpacity={0}/></linearGradient></defs><CartesianGrid strokeDasharray="4 7" stroke="#26303a" vertical={false}/><XAxis dataKey="day" tickFormatter={d => `D${d}`} tick={{ fill:'#7f8b99',fontSize:11 }} axisLine={false}/><YAxis tickFormatter={v => `₹${v/1000}k`} tick={{ fill:'#7f8b99',fontSize:11 }} axisLine={false}/><Tooltip contentStyle={{ background:'#141b23',border:'1px solid #2b3541',borderRadius:12 }} formatter={(v) => inr(Number(v ?? 0))} labelFormatter={d => `Day ${d}`} /><Area type="monotone" dataKey="expected" stroke="#00e6a4" fill="url(#expectedFill)" strokeWidth={3}/><Line type="monotone" dataKey="best" stroke="#8b7dff" dot={false} strokeDasharray="5 5"/><Line type="monotone" dataKey="worst" stroke="#ff6b78" dot={false} strokeDasharray="5 5"/></AreaChart></ResponsiveContainer></div>
+      <div className="chart-wrap full-chart"><Suspense fallback={<div className="chart-skeleton" aria-label="Loading forecast chart" />}><ForecastChart data={metrics.forecast} full/></Suspense></div>
     </section>
     <section className="forecast-lower"><RiskCenter metrics={metrics}/><CashflowCalendar state={finance}/></section>
   </div>
@@ -352,7 +342,7 @@ export function App() {
   const [simDecision, setSimDecision] = useState<Decision | undefined>()
   const goSim = (decision: Decision) => { setSimDecision(decision); setPage('simulator'); window.scrollTo({top:0,behavior:'smooth'}) }
   useEffect(() => { window.scrollTo({top:0,behavior:'smooth'}) }, [page])
-  return <div className="app"><Header page={page} setPage={setPage}/><main>{page === 'today' && <TodayPage setPage={setPage}/>} {page === 'simulator' && <SimulatorPage initial={simDecision}/>} {page === 'forecast' && <ForecastPage/>} {page === 'plans' && <PlansPage goSim={goSim}/>}</main><Footer/><Toast/>
-    <nav className="bottom-nav" aria-label="Mobile navigation">{navItems.map(item=><button key={item.id} className={page===item.id?'active':''} onClick={()=>setPage(item.id)}><item.icon/><span>{item.short}</span></button>)}</nav>
+  return <div className="app"><a className="skip-link" href="#main-content">Skip to main content</a><Header page={page} setPage={setPage}/><main id="main-content" tabIndex={-1}>{page === 'today' && <TodayPage setPage={setPage}/>} {page === 'simulator' && <SimulatorPage initial={simDecision}/>} {page === 'forecast' && <ForecastPage/>} {page === 'plans' && <PlansPage goSim={goSim}/>}</main><Footer/><Toast/>
+    <nav className="bottom-nav" aria-label="Mobile navigation">{navItems.map(item=><button key={item.id} aria-current={page===item.id?'page':undefined} className={page===item.id?'active':''} onClick={()=>setPage(item.id)}><item.icon aria-hidden="true"/><span>{item.short}</span></button>)}</nav>
   </div>
 }

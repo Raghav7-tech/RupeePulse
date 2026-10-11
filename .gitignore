@@ -2,42 +2,36 @@
 node_modules/
 .pnpm-store/
 
-# Production build outputs
+# Production and generated output
 dist/
 dist-ssr/
 build/
-
-# Generated / build info cache
+coverage/
 *.tsbuildinfo
 
-# Design / simulator reference mockups
+# Local design references and packaging workspace
 stitch_rupeerun_30_day_simulator/
+.github-push/
 
-# Environment variables
+# Environment files and secrets
 .env
 .env.*
 !.env.example
+*.local
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-# Editor / OS directories & files
+# Editors, operating systems, and temporary files
 .vscode/*
 !.vscode/extensions.json
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 .DS_Store
 Thumbs.db
-
-# Temporary / test coverage
-coverage/
+*.suo
+*.sw?
 .temp/
 .cache/

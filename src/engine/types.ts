@@ -17,7 +17,7 @@ export interface ScheduledItem {
   paid: boolean
 }
 
-export interface Income extends ScheduledItem {}
+export type Income = ScheduledItem
 export interface Commitment extends ScheduledItem { essential: boolean }
 export interface Subscription extends ScheduledItem { active: boolean; worthIt: number; icon?: string }
 
