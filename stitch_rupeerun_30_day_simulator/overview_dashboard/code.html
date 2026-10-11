@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "background": "#101419", "tertiary-container": "#d3d3ff", "inverse-primary": "#006d42", "primary-fixed-dim": "#00e38f", "surface": "#101419", "surface-container-low": "#181c21", "on-error": "#690005", "on-primary-container": "#006b41", "on-secondary": "#003824", "secondary-fixed-dim": "#4edea3", "on-primary-fixed-variant": "#005231", "outline": "#849588", "on-secondary-fixed": "#002113", "on-tertiary-fixed-variant": "#2f2ebe", "inverse-surface": "#e0e2ea", "primary-container": "#00f59b", "on-tertiary": "#1000a9", "surface-dim": "#101419", "tertiary": "#f4f1ff", "on-secondary-fixed-variant": "#005236", "on-tertiary-fixed": "#07006c", "error": "#ffb4ab", "primary-fixed": "#53ffab", "surface-tint": "#00e38f", "surface-container-lowest": "#0a0e14", "on-error-container": "#ffdad6", "surface-container-highest": "#31353b", "outline-variant": "#3b4a3f", "surface-container-high": "#262a30", "surface-container": "#1c2025", "on-surface": "#e0e2ea", "on-background": "#e0e2ea", "surface-variant": "#31353b", "on-secondary-container": "#00311f", "on-primary-fixed": "#002111", "secondary-fixed": "#6ffbbe", "surface-bright": "#36393f", "on-primary": "#003920", "tertiary-fixed-dim": "#c0c1ff", "tertiary-fixed": "#e1e0ff", "on-tertiary-container": "#4749d5", "on-surface-variant": "#b9cbbd", "secondary": "#4edea3", "error-container": "#93000a", "secondary-container": "#00a572", "inverse-on-surface": "#2d3136", "primary": "#cdffdc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "2rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-xl": "2.5rem" }, "fontFamily": { "display-hero": [ "Outfit" ], "headline-lg": [ "Outfit" ], "display-hero-mobile": [ "Outfit" ], "title-md": [ "Plus Jakarta Sans" ], "body-md": [ "Plus Jakarta Sans" ], "body-sm": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Outfit" ], "headline-md": [ "Outfit" ], "label-lg": [ "Plus Jakarta Sans" ], "body-lg": [ "Plus Jakarta Sans" ], "label-currency": [ "Outfit" ], "title-lg": [ "Plus Jakarta Sans" ], "label-md": [ "Plus Jakarta Sans" ] }, "fontSize": { "display-hero": [ "3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-lg": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "display-hero-mobile": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "title-md": [ "1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-md": [ "0.875rem", { "lineHeight": "1.35rem", "fontWeight": "400" } ], "body-sm": [ "0.75rem", { "lineHeight": "1.15rem", "fontWeight": "400" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-md": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-lg": [ "0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "600" } ], "body-lg": [ "1rem", { "lineHeight": "1.6rem", "fontWeight": "400" } ], "label-currency": [ "1.5rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "title-lg": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "label-md": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-20 max-w-[1280px] mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-sm"><img alt="RupeePulse Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7usen2HGBrZrCEL9mMq5iP0txrHf6PYdT9YI3rz6gXqDzgDD2JeHUhq_C2VMf2l12ULSKukw2dkImhaOShEMg9JtT8yHckGf-ADEWy8msFfgOT7TwM7fyZYl4UEIrs57zq5DhwBfPktZgr6bpBUr1ALavxSQum-3zo1F1hix5gJs9mWCj0pJyL8xlbePzXyyo6ixjl3eXuRAfYKSfLhf6FG3vJ91xECp3iDlvxyDT-mLzgB_n00gfOA"/><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none text-on-surface tracking-tight font-bold">RupeePulse</span><span class="font-label-md text-label-md text-secondary leading-tight mt-0.5">30-Day ₹10,000 Simulator</span></div></div><div class="hidden xl:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.35)]"><div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container-high rounded-full"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface font-semibold">Day 8 of 30</span></div><button class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md hover:bg-primary-fixed hover:text-on-primary-fixed transition-all active:scale-95" data-testid="next-day-button"><span class="material-symbols-outlined text-[16px]">fast_forward</span><span>Next Day</span></button><button class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-highest hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[16px]">play_arrow</span><span>Auto-Play 30d</span></button><button class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-error-container hover:text-on-error-container transition-all" data-testid="reset-button"><span class="material-symbols-outlined text-[16px]">restart_alt</span><span>Reset</span></button></div></div><nav class="hidden lg:flex items-center gap-space-md shrink-0" data-active-classes="text-primary-container font-semibold"><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="overview-and-dashboard" href="#">Overview &amp; Dashboard</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="decision-simulator" href="#">Decision Simulator (What If?)</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="forecast-and-cashflow" href="#">Forecast &amp; Cashflow</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="subscriptions-and-bills" href="#">Subscriptions &amp; Bills</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="goals-and-streaks" href="#">Goals &amp; Streaks</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden md:flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.25)]"><div class="flex flex-col text-right px-1.5"><span class="font-label-md text-label-md text-on-surface-variant text-[10px] leading-none uppercase tracking-wider">Balance</span><span class="font-label-currency text-label-currency leading-tight text-on-surface text-[14px]">₹6,420</span></div><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex flex-col px-1.5"><span class="font-label-md text-label-md text-on-surface-variant text-[10px] leading-none uppercase tracking-wider">Safe Spend</span><span class="font-label-md text-label-md text-secondary leading-tight font-bold">₹185/day</span></div><div class="h-6 w-px bg-surface-container-highest"></div><span class="px-2 py-0.5 rounded-full font-label-md text-label-md bg-surface-container-highest text-secondary-fixed-dim text-[11px] font-semibold uppercase tracking-wider">Moderate Risk</span></div><button aria-label="Toggle color mode" class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="flex items-center gap-2 pl-1"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="hidden sm:inline font-label-lg text-label-lg text-on-surface font-semibold">Aarav</span></div></div></div></header><main class="w-full pt-20 bg-background flex-1"><div class="flex flex-col w-full">
+<div class="max-w-[1280px] w-full mx-auto px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- Section 1: Top Welcome & Scenario Kinetic Banner -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-low shadow-xl p-space-lg">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-64 h-64 rounded-full bg-secondary-container/10 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full font-label-md text-label-md bg-primary-container/15 text-primary-fixed-dim uppercase tracking-wider font-semibold">Live Simulation Phase</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Active Model: 30-Day Solvency Index</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+            Hey Aarav! You are on <span class="text-primary-container">Day 8 of 30</span>.
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Your Goa trip savings &amp; month-end runway are on the line. Every expense or simulation immediately recalculates your Safe Daily Allowance, 30-Day Forecast, Goal ETA, and Risk Score.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm bg-surface-container px-space-md py-space-sm rounded-lg shadow-md shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">sync_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Dynamic Engine</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Fully Coupled Feed</span>
+</div>
+</div>
+<div class="hidden sm:block h-8 w-px bg-surface-container-highest mx-1"></div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-md text-label-md text-primary-fixed-dim font-semibold">Auto-Sync On</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Primary 4-Metric Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Card 1: Balance -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-lg shadow-xl relative overflow-hidden group hover:bg-surface-container transition-all" data-testid="balance">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Remaining Balance</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-hero text-headline-lg font-bold text-on-surface" id="metric-balance-val">₹6,420</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ ₹10k base</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface-variant">64.2% Remaining</span>
+<span class="text-primary-fixed-dim font-semibold">22 Days left</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" id="metric-balance-bar" style="width: 64.2%"></div>
+</div>
+</div>
+<!-- 7-day spend trend line sparkline -->
+<div class="mt-space-md pt-space-xs">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">7-Day Spend Velocity</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">Avg ₹447/d</span>
+</div>
+<svg class="w-full h-9 overflow-visible" fill="none" viewbox="0 0 180 36">
+<path class="text-primary-container" d="M 0 30 Q 30 18, 60 24 T 120 12 T 180 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<circle class="fill-primary-container" cx="180" cy="8" r="3.5"></circle>
+</svg>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center gap-space-xs text-primary-fixed-dim bg-surface-container px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-body-sm text-body-sm font-semibold truncate">+₹800 freelance income on Day 15</span>
+</div>
+</div>
+<!-- Card 2: Safe Daily Allowance -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-lg shadow-xl relative overflow-hidden group hover:bg-surface-container transition-all" data-testid="daily-allowance">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Safe Daily Allowance</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-hero text-headline-lg font-bold text-primary-container" id="metric-allowance-val">₹174</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">/ day</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full font-label-md text-label-md bg-primary-container/15 text-primary-fixed-dim uppercase tracking-wider font-semibold" id="metric-allowance-status">
+            Safe Zone
+          </span>
+</div>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Formula pool</span>
+<span class="text-on-surface font-semibold">₹3,820 pool</span>
+</div>
+<p class="text-[11px] leading-tight text-on-surface-variant">
+            (₹6.4k bal - ₹2.1k bills - ₹500 Goa - ₹1k buffer) ÷ 22d
+          </p>
+</div>
+<!-- Interactive Quick Shock Slider -->
+<div class="mt-space-md space-y-space-xs">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface-variant">Simulate Extra Dinner</span>
+<span class="text-on-surface font-semibold" id="dinner-slider-val">₹0</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary-container" id="quick-dinner-range" max="600" min="0" step="50" type="range" value="0"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant">
+<span>₹0 (₹174/d)</span>
+<span class="text-secondary font-semibold" id="sim-dinner-result">₹350 dinner cuts to ₹158/d</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Discretionary Burn</span>
+<span class="text-on-surface font-semibold">22 Days Protected</span>
+</div>
+</div>
+<!-- Card 3: Financial Health Score -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-lg shadow-xl relative overflow-hidden group hover:bg-surface-container transition-all" data-testid="health-score">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Financial Health</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface mt-1">Status: Stable</span>
+</div>
+<span class="px-2.5 py-1 rounded-full font-label-md text-label-md bg-secondary/15 text-secondary font-semibold">
+            Good
+          </span>
+</div>
+<div class="mt-space-md flex items-center gap-space-md">
+<!-- Circular Ring Gauge -->
+<div class="relative w-20 h-20 shrink-0 flex items-center justify-center">
+<svg class="w-20 h-20 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="74, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md font-bold text-on-surface leading-none">74</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">/ 100</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 flex-1">
+<div>
+<div class="flex justify-between text-body-sm font-label-md text-[11px] mb-0.5">
+<span class="text-on-surface-variant">Budget Adherence</span>
+<span class="text-on-surface font-semibold">82%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-label-md text-[11px] mb-0.5">
+<span class="text-on-surface-variant">Discretionary Disc.</span>
+<span class="text-on-surface font-semibold">78%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md space-y-1 font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+<div class="flex justify-between text-[11px]">
+<span>Savings Index: 70%</span>
+<span>Subs Efficiency: 65%</span>
+</div>
+<span class="text-secondary text-[11px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Top 18% among Day-8 cohorts
+          </span>
+</div>
+</div>
+<!-- Card 4: Risk Runway & Score -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-lg shadow-xl relative overflow-hidden group hover:bg-surface-container transition-all" data-testid="risk-level">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Risk Runway &amp; Score</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Score: 42/100</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-secondary-fixed-dim uppercase tracking-wider font-semibold">
+            Moderate Risk
+          </span>
+</div>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Discretionary Runway</span>
+<span class="font-label-md text-label-md text-error font-bold">18 Days</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-surface-tint rounded-full" style="width: 60%"></div>
+</div>
+<p class="text-[11px] text-on-surface-variant pt-1 leading-tight">
+            Based on current ₹240/day discretionary burn vs 22 days remaining in cycle.
+          </p>
+</div>
+<div class="mt-space-md flex items-start gap-space-xs p-space-sm rounded-lg bg-surface-container text-error">
+<span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5">crisis_alert</span>
+<div class="flex flex-col text-[11px] leading-tight">
+<span class="font-bold">Liquidity Shock Warning</span>
+<span class="text-on-surface-variant">Projected squeeze around Day 21 if Swiggy rate persists.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Central Two-Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column (approx 60% -> 7 cols on 12-col grid) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Hero Action Card: Decision Simulator Quick Launcher -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-space-xs text-primary-fixed-dim mb-space-xs">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider">Decision Simulator Sandbox</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold">
+            Thinking of ordering gourmet pizza tonight (₹550)?
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+            Simulate how this unplanned dinner cuts your safe daily allowance from <span class="text-primary-container font-semibold">₹174</span> to <span class="text-error font-semibold">₹149/day</span> for the remaining 22 days and delays your Goa reserve.
+          </p>
+<div class="mt-space-md flex flex-wrap items-center gap-space-md pt-space-xs">
+<button class="px-space-lg py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold flex items-center gap-space-xs hover:bg-primary-fixed hover:text-on-primary-fixed shadow-md active:scale-95 transition-all" data-testid="simulate-button" onclick="triggerSimModal()">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span>Launch What-If Simulator</span>
+</button>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">bolt</span> Instant deterministic feedback
+            </span>
+</div>
+</div>
+<!-- Active Unexpected Event Alert Box -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl space-y-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">power_off</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-label-md text-label-md bg-error/15 text-error font-semibold uppercase tracking-wider">Unplanned Event</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Day 8 Event Shock</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold mt-0.5">
+                  Laptop Charger Cable Frayed!
+                </h3>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant block uppercase tracking-wider">Replacement Cost</span>
+<span class="font-title-lg text-title-lg text-error font-bold">- ₹850</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            How would you like to handle this immediate liquidity shock? Select an allocation path to test its systemic impact:
+          </p>
+<!-- 4 Immediate Response Options -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<button class="text-left p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between group" onclick="resolveShock(1)">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold group-hover:text-primary-container transition-colors">1. Emergency Buffer</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container text-[18px]">verified_user</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Buffer drops from ₹1,000 → ₹150. Allowance unchanged.</span>
+</button>
+<button class="text-left p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between group" onclick="resolveShock(2)">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold group-hover:text-primary-container transition-colors">2. Dip Goa Trip Fund</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container text-[18px]">flight_takeoff</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Trip savings ₹1,500 → ₹650. ETA delayed to Day 34.</span>
+</button>
+<button class="text-left p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between group" onclick="resolveShock(3)">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold group-hover:text-primary-container transition-colors">3. Cut Daily Food ₹40</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container text-[18px]">lunch_dining</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Allowance drops ₹174 → ₹134 for 21 days. Buffer intact.</span>
+</button>
+<button class="text-left p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between group" onclick="resolveShock(4)">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold group-hover:text-primary-container transition-colors">4. Borrow Friend's Spare</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container text-[18px]">handshake</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Skip cost completely. ₹0 cash impact. Social karma used.</span>
+</button>
+</div>
+<div class="hidden p-space-sm rounded bg-surface-container text-primary-fixed-dim font-body-sm text-body-sm flex items-center gap-space-xs" id="shock-status-msg">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+<span id="shock-status-text">Shock resolved using Buffer. Models updated!</span>
+</div>
+</div>
+<!-- Recent Transactions & Quick-Add Transaction Bar -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">receipt_long</span>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold">Ledger &amp; Quick-Add</h3>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">5 Recorded this cycle</span>
+</div>
+<!-- Quick-Add Transaction Bar -->
+<form class="space-y-space-sm bg-surface-container p-space-md rounded-xl" id="quick-add-form" onsubmit="handleAddExpense(event)">
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-space-sm">
+<div class="sm:col-span-4 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-headline-md text-headline-md text-on-surface-variant">₹</span>
+<input class="w-full pl-8 pr-3 py-2 bg-surface-container-low rounded-lg font-headline-md text-headline-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface" id="tx-amount" placeholder="240" required="" type="number"/>
+</div>
+<div class="sm:col-span-8">
+<input class="w-full px-3 py-2 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface h-full" id="tx-title" placeholder="Title (e.g. Swiggy Biryani, Metro Recharge)" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<!-- Category Pills -->
+<div class="flex flex-wrap items-center gap-1.5" id="category-selector">
+<button class="cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold transition-all" onclick="selectCategory(this, 'Food')" type="button">Food</button>
+<button class="cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface-variant font-semibold hover:text-on-surface transition-all" onclick="selectCategory(this, 'Transport')" type="button">Transport</button>
+<button class="cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface-variant font-semibold hover:text-on-surface transition-all" onclick="selectCategory(this, 'Subscriptions')" type="button">Subscriptions</button>
+<button class="cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface-variant font-semibold hover:text-on-surface transition-all" onclick="selectCategory(this, 'Shopping')" type="button">Shopping</button>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold flex items-center gap-1 hover:bg-primary-fixed hover:text-on-primary-fixed transition-all active:scale-95" type="submit">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Expense</span>
+</button>
+</div>
+</form>
+<!-- Interactive Feed of Last 5 Transactions -->
+<div class="space-y-space-xs" id="tx-list">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Swiggy Meal Bowl</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Food</span>
+<span>•</span>
+<span>Day 8, 1:45 PM</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-currency text-label-currency text-on-surface">- ₹280</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="undoTx(this, 280)" title="Undo transaction">
+<span class="material-symbols-outlined text-[16px]">undo</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">directions_subway</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Delhi Metro Smart Card Recharge</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Transport</span>
+<span>•</span>
+<span>Day 7, 6:10 PM</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-currency text-label-currency text-on-surface">- ₹400</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="undoTx(this, 400)" title="Undo transaction">
+<span class="material-symbols-outlined text-[16px]">undo</span>
+</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">local_cafe</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Blue Tokai Cold Brew</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Food</span>
+<span>•</span>
+<span>Day 6, 4:20 PM</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-currency text-label-currency text-on-surface">- ₹220</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="undoTx(this, 220)" title="Undo transaction">
+<span class="material-symbols-outlined text-[16px]">undo</span>
+</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">subscriptions</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Spotify Premium Student</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Subscriptions</span>
+<span>•</span>
+<span>Day 5, 9:00 AM</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-currency text-label-currency text-on-surface">- ₹119</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="undoTx(this, 119)" title="Undo transaction">
+<span class="material-symbols-outlined text-[16px]">undo</span>
+</button>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Blinkit Grocery Restock</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Food</span>
+<span>•</span>
+<span>Day 4, 11:30 AM</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-currency text-label-currency text-on-surface">- ₹640</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="undoTx(this, 640)" title="Undo transaction">
+<span class="material-symbols-outlined text-[16px]">undo</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (approx 40% -> 5 cols on 12-col grid) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- 30-Day Liquidity Forecast Mini-Chart Preview -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Runway Trajectory</span>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold">30-Day Liquidity Forecast</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full font-label-md text-label-md bg-surface-container-highest text-secondary-fixed-dim font-semibold">
+              Day 1–30
+            </span>
+</div>
+<!-- Rich SVG Forecast Chart with bands -->
+<div class="relative bg-surface-container rounded-lg p-space-md">
+<div class="flex justify-between text-body-sm font-label-md text-on-surface-variant mb-2">
+<span>Day 1 (₹10k)</span>
+<span class="text-error font-semibold">Critical Dip Day 22</span>
+<span>Day 30 (Goal)</span>
+</div>
+<svg class="w-full h-44 overflow-visible" fill="none" viewbox="0 0 320 140">
+<!-- Confidence Band (Best vs Worst Case) -->
+<polygon class="fill-primary-container/10" points="0,20 50,30 100,45 150,60 200,90 230,110 270,105 320,100 320,130 270,135 230,138 200,125 150,105 100,75 50,50 0,25"></polygon>
+<!-- Target Baseline (₹1,500 buffer threshold) -->
+<line class="text-outline-variant" stroke="currentColor" stroke-dasharray="4,4" stroke-width="1.5" x1="0" x2="320" y1="115" y2="115"></line>
+<text class="text-outline text-[9px] font-mono" fill="currentColor" x="5" y="110">BUFFER SAFETY ₹1,000</text>
+<!-- Actual Trajectory to Day 8 -->
+<path class="text-primary-container" d="M 0 20 Q 40 35, 80 52" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path>
+<!-- Current Day 8 Node -->
+<circle class="fill-primary-container" cx="80" cy="52" r="5"></circle>
+<circle class="stroke-primary-container" cx="80" cy="52" fill="none" opacity="0.6" r="9" stroke-width="1.5"></circle>
+<!-- Forecast Curve Expected -->
+<path class="text-secondary" d="M 80 52 C 120 70, 160 85, 200 104 S 240 128, 280 115 S 310 108, 320 106" stroke="currentColor" stroke-dasharray="5,5" stroke-width="2"></path>
+<!-- Worst-case curve showing breach at Day 22 -->
+<path class="text-error/60" d="M 80 52 C 120 80, 170 105, 230 134 S 280 136, 320 132" stroke="currentColor" stroke-dasharray="3,3" stroke-width="1.5"></path>
+<!-- Day 22 Stress Pin -->
+<line class="text-error/30" stroke="currentColor" stroke-width="1" x1="230" x2="230" y1="10" y2="135"></line>
+<circle class="fill-error" cx="230" cy="128" r="4"></circle>
+</svg>
+<div class="mt-space-xs flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-on-surface-variant">Recorded (D1-D8)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">Expected Path</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="text-on-surface-variant">Stress Trajectory</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Runway dips toward the minimum buffer limit around <span class="text-on-surface font-semibold">Day 21-23</span> right when your electricity bill (₹900) and Cult Pass auto-debit hit simultaneously.
+          </p>
+</div>
+<!-- Subscriptions Leak Watcher -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl space-y-space-md">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Leak Watcher</span>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold">Recurring Auto-Debits</h3>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant block uppercase tracking-wider">Monthly Drain</span>
+<span class="font-title-md text-title-md text-secondary font-bold">₹1,649 / mo</span>
+</div>
+</div>
+<div class="space-y-space-xs">
+<!-- Netflix -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">movie</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Netflix Mobile</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Charges Day 18 • ₹199</span>
+</div>
+</div>
+<label class="flex items-center gap-2 cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">Worth it?</span>
+<input checked="" class="w-4 h-4 rounded bg-surface-container-highest accent-primary-container cursor-pointer" onchange="toggleSubscription(this, 199)" type="checkbox"/>
+</label>
+</div>
+<!-- Spotify -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[18px]">music_note</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Spotify Student</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Paid Day 5 • ₹119</span>
+</div>
+</div>
+<label class="flex items-center gap-2 cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">Worth it?</span>
+<input checked="" class="w-4 h-4 rounded bg-surface-container-highest accent-primary-container cursor-pointer" onchange="toggleSubscription(this, 119)" type="checkbox"/>
+</label>
+</div>
+<!-- Gym Cult Pass -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Cult Pass Monthly</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Charges Day 22 • ₹1,099</span>
+</div>
+</div>
+<label class="flex items-center gap-2 cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">Worth it?</span>
+<input checked="" class="w-4 h-4 rounded bg-surface-container-highest accent-primary-container cursor-pointer" onchange="toggleSubscription(this, 1099)" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>Pausing Cult Pass boosts Safe Allowance by +₹50/day</span>
+<button class="text-primary-container font-semibold hover:underline" onclick="pauseCult()">Simulate Pause</button>
+</div>
+</div>
+<!-- Goals Tracker Card: Goa Weekend Trip -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-xl space-y-space-md relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">beach_access</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Target Fund</span>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold">Goa Weekend Trip</h3>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full font-label-md text-label-md bg-error/15 text-error font-semibold uppercase tracking-wider" id="goal-status-badge">
+              At Risk
+            </span>
+</div>
+<!-- Goal Progress -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-baseline">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface" id="goal-saved-val">₹1,500</span>
+<span class="font-label-md text-label-md text-on-surface-variant">saved of ₹4,000 target</span>
+</div>
+<span class="font-title-md text-title-md font-bold text-secondary" id="goal-pct">37.5%</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" id="goal-progress-bar" style="width: 37.5%"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm p-space-sm rounded-lg bg-surface-container font-body-sm text-body-sm">
+<div>
+<span class="text-on-surface-variant text-[11px] block">Projected Completion</span>
+<span class="text-on-surface font-bold" id="goal-eta">Day 28 of 30</span>
+</div>
+<div>
+<span class="text-on-surface-variant text-[11px] block">Required Daily Save</span>
+<span class="text-primary-fixed-dim font-bold">₹114 / day</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-error font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] shrink-0">warning</span>
+<span id="goal-risk-note">At risk if Day 8 laptop charger shock draws down savings fund.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro Modal for What-If Simulator Quick Preview -->
+<div class="fixed inset-0 z-50 bg-background/80 backdrop-blur-md hidden items-center justify-center p-space-md" id="sim-modal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container-low p-space-lg shadow-2xl space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[24px]">tune</span>
+<h3 class="font-title-lg text-title-lg text-on-surface font-bold">Decision Impact: Gourmet Pizza</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center" onclick="closeSimModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container space-y-space-sm font-body-md text-body-md">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Expense Amount</span>
+<span class="text-on-surface font-bold text-headline-md">₹550.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Safe Daily Allowance</span>
+<div class="text-right">
+<span class="line-through text-on-surface-variant">₹174</span> → <span class="text-error font-bold">₹149/day</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Discretionary Days Left</span>
+<div class="text-right">
+<span class="line-through text-on-surface-variant">18 days</span> → <span class="text-error font-bold">15.8 days</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Goa Fund Security</span>
+<span class="text-error font-semibold">Elevates Risk to Amber</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Alternative suggestion: Cook at home or order a mini wrap (₹180) to protect ₹370 into your weekend safety buffer.
+      </p>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md" onclick="closeSimModal()">Close Preview</button>
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-bold hover:bg-primary-fixed" onclick="applySimulatedExpense()">Commit to Ledger (-₹550)</button>
+</div>
+</div>
+</div>
+<script>
+    let currentBalance = 6420;
+    let selectedCat = 'Food';
+
+    function updateMetrics() {
+      document.getElementById('metric-balance-val').innerText = '₹' + currentBalance.toLocaleString('en-IN');
+      const pct = Math.max(0, Math.min(100, (currentBalance / 10000) * 100));
+      document.getElementById('metric-balance-bar').style.width = pct + '%';
+      
+      // Calculate live allowance: (currentBalance - 2100 - 500 - 1000) / 22
+      const pool = Math.max(0, currentBalance - 2100 - 500 - 1000);
+      const allowance = Math.round(pool / 22);
+      document.getElementById('metric-allowance-val').innerText = '₹' + allowance;
+      
+      const statusPill = document.getElementById('metric-allowance-status');
+      if (allowance < 140) {
+        statusPill.innerText = 'Danger Zone';
+        statusPill.className = 'px-2.5 py-1 rounded-full font-label-md text-label-md bg-error/15 text-error uppercase tracking-wider font-semibold';
+      } else if (allowance < 165) {
+        statusPill.innerText = 'Caution';
+        statusPill.className = 'px-2.5 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-secondary uppercase tracking-wider font-semibold';
+      } else {
+        statusPill.innerText = 'Safe Zone';
+        statusPill.className = 'px-2.5 py-1 rounded-full font-label-md text-label-md bg-primary-container/15 text-primary-fixed-dim uppercase tracking-wider font-semibold';
+      }
+    }
+
+    const dinnerSlider = document.getElementById('quick-dinner-range');
+    if (dinnerSlider) {
+      dinnerSlider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        document.getElementById('dinner-slider-val').innerText = '₹' + val;
+        const currentPool = Math.max(0, currentBalance - 2100 - 500 - 1000 - val);
+        const cutAllowance = Math.round(currentPool / 22);
+        document.getElementById('sim-dinner-result').innerText = `₹${val} dinner cuts to ₹${cutAllowance}/d`;
+      });
+    }
+
+    function selectCategory(btn, cat) {
+      selectedCat = cat;
+      const pills = document.querySelectorAll('.cat-pill');
+      pills.forEach(p => {
+        p.className = 'cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface-variant font-semibold hover:text-on-surface transition-all';
+      });
+      btn.className = 'cat-pill px-3 py-1 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold transition-all';
+    }
+
+    function handleAddExpense(e) {
+      e.preventDefault();
+      const amtInput = document.getElementById('tx-amount');
+      const titleInput = document.getElementById('tx-title');
+      const amt = parseInt(amtInput.value);
+      const title = titleInput.value.trim();
+
+      if (!amt || !title) return;
+
+      currentBalance -= amt;
+      updateMetrics();
+
+      // Prepend to transaction feed
+      const list = document.getElementById('tx-list');
+      const row = document.createElement('div');
+      row.className = 'flex items-center justify-between p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors animate-pulse';
+      row.innerHTML = `
+        <div class="flex items-center gap-space-sm">
+          <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+            <span class="material-symbols-outlined text-[20px]">bolt</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-title-md text-title-md text-on-surface font-semibold">${title}</span>
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+              <span>${selectedCat}</span>
+              <span>•</span>
+              <span>Just now</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-space-md">
+          <span class="font-label-currency text-label-currency text-on-surface">- ₹${amt}</span>
+          <button onclick="undoTx(this, ${amt})" title="Undo transaction" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-[16px]">undo</span>
+          </button>
+        </div>
+      `;
+      list.prepend(row);
+
+      amtInput.value = '';
+      titleInput.value = '';
+      setTimeout(() => row.classList.remove('animate-pulse'), 800);
+    }
+
+    function undoTx(btn, amt) {
+      const row = btn.closest('div.flex.items-center.justify-between');
+      if (row) {
+        row.remove();
+        currentBalance += amt;
+        updateMetrics();
+      }
+    }
+
+    function resolveShock(option) {
+      const msg = document.getElementById('shock-status-msg');
+      const text = document.getElementById('shock-status-text');
+      msg.classList.remove('hidden');
+
+      if (option === 1) {
+        text.innerText = 'Resolved via Buffer: ₹850 deducted from Emergency Reserve. Safe daily allowance preserved!';
+      } else if (option === 2) {
+        document.getElementById('goal-saved-val').innerText = '₹650';
+        document.getElementById('goal-pct').innerText = '16.2%';
+        document.getElementById('goal-progress-bar').style.width = '16.2%';
+        document.getElementById('goal-eta').innerText = 'Day 34 (Delayed)';
+        text.innerText = 'Resolved via Goa Fund: Savings drawn down. Trip milestone delayed.';
+      } else if (option === 3) {
+        currentBalance -= 850;
+        updateMetrics();
+        text.innerText = 'Daily allowance adjusted downwards by ₹40/day across remaining 21 days.';
+      } else if (option === 4) {
+        text.innerText = "Spare cable borrowed! ₹0 drained. Emergency buffer completely safe.";
+      }
+    }
+
+    function toggleSubscription(cb, cost) {
+      if (!cb.checked) {
+        currentBalance += cost;
+      } else {
+        currentBalance -= cost;
+      }
+      updateMetrics();
+    }
+
+    function pauseCult() {
+      currentBalance += 1099;
+      updateMetrics();
+      alert('Cult Pass Auto-Debit paused for this cycle (+₹1,099 restored to liquidity!). Safe allowance recalculated.');
+    }
+
+    function triggerSimModal() {
+      document.getElementById('sim-modal').classList.remove('hidden');
+      document.getElementById('sim-modal').classList.add('flex');
+    }
+
+    function closeSimModal() {
+      document.getElementById('sim-modal').classList.add('hidden');
+      document.getElementById('sim-modal').classList.remove('flex');
+    }
+
+    function applySimulatedExpense() {
+      currentBalance -= 550;
+      updateMetrics();
+      closeSimModal();
+      
+      const list = document.getElementById('tx-list');
+      const row = document.createElement('div');
+      row.className = 'flex items-center justify-between p-space-sm rounded-lg bg-surface-container';
+      row.innerHTML = `
+        <div class="flex items-center gap-space-sm">
+          <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+            <span class="material-symbols-outlined text-[20px]">local_pizza</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-title-md text-title-md text-on-surface font-semibold">Gourmet Pizza (Simulated)</span>
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+              <span>Food</span>
+              <span>•</span>
+              <span>Committed from Simulator</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-space-md">
+          <span class="font-label-currency text-label-currency text-on-surface">- ₹550</span>
+          <button onclick="undoTx(this, 550)" title="Undo transaction" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-[16px]">undo</span>
+          </button>
+        </div>
+      `;
+      list.prepend(row);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest mt-space-xl shadow-[0_-1px_12px_rgba(0,0,0,0.4)]"><div class="max-w-[1280px] mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-space-lg"><div class="space-y-space-xs"><div class="flex items-center gap-space-xs mb-space-xs"><span class="material-symbols-outlined text-primary-container text-[20px]">bolt</span><span class="font-title-md text-title-md text-on-surface font-bold">RupeePulse Engine</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Autonomous 30-day runway projection simulating micro-cashflow shocks, UPI tap-velocity, and monthly safety thresholds for Gen Z earners.</p></div><div class="space-y-space-xs"><div class="flex items-center gap-space-xs mb-space-xs"><span class="material-symbols-outlined text-secondary text-[20px]">lightbulb</span><span class="font-title-md text-title-md text-on-surface font-bold">Gen Z Money Rule</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">The 24-Hour Swiggy/Zomato Cooldown: Adding unplanned ₹350 cart orders to the simulator saves on average ₹2,100 per 30-day runway.</p></div><div class="space-y-space-xs"><div class="flex items-center gap-space-xs mb-space-xs"><span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">verified_user</span><span class="font-title-md text-title-md text-on-surface font-bold">Runway Transparency</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Zero shadow loans. Zero predatory BNPL loops. RupeePulse simulates realistic bank interest, auto-debits, and recurring gym/OTT cycles.</p></div><div class="space-y-space-xs"><div class="flex items-center gap-space-xs mb-space-xs"><span class="material-symbols-outlined text-secondary-fixed text-[20px]">memory</span><span class="font-title-md text-title-md text-on-surface font-bold">Simulation Telemetry</span></div><div class="flex flex-wrap gap-space-xs font-label-md text-label-md"><span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Engine: v4.2 Active</span><span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Base: ₹10,000 INR</span><span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container font-semibold">State: Day 8 Synced</span></div></div></div><div class="pt-space-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><p>© 2025 RupeePulse Technologies India. Built for financially ambitious Gen Z.</p><div class="flex items-center gap-space-md"><span class="text-on-surface-variant">Deterministic Simulation Sandbox</span><span class="w-1 h-1 rounded-full bg-outline-variant"></span><span class="text-primary-container font-label-md text-label-md">100% Client-Side Mode</span></div></div></div></footer></body></html>
