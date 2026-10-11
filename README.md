@@ -2,7 +2,7 @@
 
 RupeePulse is a responsive, frontend-only personal-finance simulator built for the PROMPT RUN “₹10,000 for 30 days” challenge. It helps a Gen Z user see how a decision changes not only their balance, but their daily flexibility, savings goal, runway, risk, financial health, and month-end forecast.
 
-[Live HTTPS demo](https://raghav7-tech.github.io/RupeePulse/) · [Product plan](./DESIGN.md)
+[Live on Vercel](https://rupee-pulse-chi.vercel.app/) · [GitHub Pages mirror](https://raghav7-tech.github.io/RupeePulse/) · [Product plan](./DESIGN.md)
 
 ## Run locally
 
@@ -73,7 +73,7 @@ npm run check
 
 ## Continuous deployment
 
-Every push to `main` runs lint, tests, and the production build in GitHub Actions. Only a successful run is uploaded to GitHub Pages over HTTPS. In repository settings, Pages must use **GitHub Actions** as its source.
+Every push to `main` runs lint, tests, and a GitHub-Pages-mode production build in GitHub Actions. The default Vite build keeps root-relative assets for Vercel; the Pages build uses the repository subpath. This prevents one hosting target from breaking the other.
 
 ## Demo flow
 
