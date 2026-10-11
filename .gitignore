@@ -10,6 +10,9 @@ build/
 # Generated / build info cache
 *.tsbuildinfo
 
+# Design / simulator reference mockups
+stitch_rupeerun_30_day_simulator/
+
 # Environment variables
 .env
 .env.*
